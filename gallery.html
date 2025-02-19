@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery 📷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="photoGallery" class="gallery-container">
+        <h1 class="gallery-title">Ingett foto-foto ini dong harusnya </h1>
+
+        <!-- Galeri Foto -->
+        <div class="gallery" id="gallery"></div>
+
+        <!-- Tombol Navigasi -->
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn">⬅️</a>
+            <a href="ucapan.html" class="btn">💌</a>
+        </div>
+    </div>
+
+    <!-- Modal untuk Menampilkan Gambar -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="modal-content" onclick="event.stopPropagation()">
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <script>
+        // Menampilkan Galeri secara Dinamis
+        const gallery = document.getElementById('gallery');
+        const totalImages = 19;
+        let currentImage = 1;
+        let currentFormat = 'jpg';
+
+        // Membuat Item Galeri
+        for (let i = 1; i <= totalImages; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `
+                <img src="asset/foto${i}.jpg" alt="Photo ${i}" onclick="openModal(${i}, 'jpg')">
+                <div class="overlay">Klik ae 👀</div>
+            `;
+            gallery.appendChild(galleryItem);
+        }
+
+        // Buka Modal
+        function openModal(index, format) {
+            currentImage = index;
+            currentFormat = format;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = `asset/foto${index}.${format}`;
+
+            // Animasi Zoom-In
+            setTimeout(() => {
+                modalImg.classList.add('zoom-in');
+            }, 50);
+        }
+
+        // Tutup Modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+
+            // Animasi Zoom-Out
+            modalImg.classList.remove('zoom-in');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Navigasi Gambar di Modal (Next/Prev)
+        function changeImage(step) {
+            currentImage += step;
+            if (currentImage < 1) currentImage = totalImages;
+            if (currentImage > totalImages) currentImage = 1;
+            openModal(currentImage, currentFormat);
+        }
+
+        // Tutup Modal jika Klik di Luar
+        window.onclick = function (event) {
+            if (event.target === document.getElementById('imageModal')) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+
+</html>

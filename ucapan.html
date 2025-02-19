@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎈 Ucapan Spesial 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="ucapan-container">
+        <!-- Judul Ucapan -->
+        <h1 class="ucapan-title">🎂 Cheers to 23 Years 🎉</h1>
+
+        <!-- Teks Ucapan -->
+        <p id="ucapanText" class="ucapan-text">
+            <!-- Efek ketik otomatis diisi lewat JavaScript -->
+        </p>
+
+        <!-- Catatan Akhir -->
+        <p class="ucapan-footer">🌟 Sambil dengeri lagunyo han 🌟</p>
+
+        <!-- Pemutar Lagu dengan Tombol -->
+        <button id="playMusic" class="btn">🎵</button>
+        <audio id="backgroundMusic" loop>
+            <source src="asset/lagu1.mp3" type="audio/mp3">
+            Browser Anda tidak mendukung audio.
+        </audio>
+
+        <!-- Tombol Navigasi -->
+        <a href="index.html" class="btn">⬅️</a>
+        <a href="gallery.html" class="btn">🌸</a>
+
+    </div>
+
+    <script>
+        // Teks Ucapan
+        const message = `
+Congrats on becoming a year older 🌼🌸🤏🏻✨
+
+HAHAHAHA 😂😂😂😂
+Ingetkan beberapo hari lalu aku minta foto ke kau? 
+Masih penasaran kah? 
+Wkkwkwkwk maaf yay, semoga biso ngobati rindu kau samo kawan-kawan kau dengan ngeliat sedikit foto-foto tadi, aku mentok nian sudah dak ketemu lagi foto kauuuu, jangan ketawooo wkwkwkkwk💐
+
+Aku dak tau harus mulai dari mano han tapi yang pasti aku ikut seneng kau masih biso bertahan sampe titik ini makasih sudah melewati banyak hal yang aku yakin itu dak mudah. 
+I hope your day is amazing. 23 tahun woyyy makin tuo be umur wkwkwk, semoga kau selalu biso ngelewati hal-hal dk terduga lainnyo, sehat terus yo han, jangan pernah putus asa jangannn sering Overthinking! jangan takut untuk memulai sesuatu yang baru,  cuman karno kekurangan yang diri kito miliki. Percayolah "Apo yang kito dapet dimasa tuo itu cerminan apo yang kito usahakan dimasa mudo" 🐣🐥
+
+Semoga diumur yang baru ini hidup kau lebih barokah lagi, dilancarkan lagi setiap prosesny, kalo tahun kemarin aku bedoany kau cepet wisuda tahun ini aku bedoa semoga kau cepet keterimo kerjo dan dapet kerjoan yang lingkunganny dak toxic, gajinyo besak ✨🔥, teruslah bermanfaat dan berbuat baik ke semua orang han, kalo dak ado orang baik yang ditemui jadilah orang baik itu. Bahagia terusss!! U deserve better than u think 🥂🧸🗝🔥✨
+
+Dan aku mintak maaf kalo web ini banyak nian kurangnyo karno waktuny mepet niannn dan aku harus ngirim ke kauny tepat jam 00.00 ditanggal 20 Feb 2025 wkwkkwkwk, semoga kau seneng han 🤏🏻✨
+
+I'm proud of you ✨🌼
+Have a great Birthday Raihan Rasyid 🌈✨🙈
+        `;
+
+        // Efek Ketik Otomatis
+        const textContainer = document.getElementById('ucapanText');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < message.length) {
+                textContainer.innerHTML += message.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        window.onload = typeWriter;
+
+        // Memutar Lagu Ketika Tombol Diklik
+        const playMusicButton = document.getElementById('playMusic');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        playMusicButton.addEventListener('click', () => {
+            backgroundMusic.play();
+            playMusicButton.style.display = 'none'; // Sembunyikan tombol setelah diputar
+        });
+
+    </script>
+
+</body>
+
+</html>

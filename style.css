@@ -1,0 +1,268 @@
+/* Umum */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #D0E7FF, #A0C4FF); /* Gradasi biru */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    overflow: auto;
+    padding: 20px;
+    color: #003366; /* Warna teks biru tua */
+}
+
+/* Kontainer Galeri */
+.gallery-container {
+    padding: 20px;
+}
+
+/* Judul Galeri */
+.gallery-title {
+    font-size: 2rem;
+    color: #00509E; /* Warna biru tua */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Galeri */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Item Galeri */
+.gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Membuat Semua Gambar Sama Ukuran */
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Menjaga proporsi gambar */
+}
+
+/* Efek Hover */
+.gallery-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Overlay Efek */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 80, 158, 0.7); /* Biru tua transparan */
+    color: white;
+    padding: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Konten Modal */
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    animation: zoomIn 0.5s;
+}
+
+/* Animasi Zoom */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Tombol Tutup */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Tombol Next dan Prev */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+/* Efek Hover Tombol Next dan Prev */
+.prev:hover, .next:hover {
+    color: #A0C4FF; /* Biru muda */
+    transform: scale(1.2);
+}
+
+/* Tombol Navigasi */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    margin: 20px;
+    font-size: 1.5rem;
+    background: #007BFF; /* Biru utama */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Animasi Balon Terbang */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Styling Balon */
+.balloon {
+    width: 100px; /* Ukuran balon */
+    animation: float 3s ease-in-out infinite; /* Animasi terus berulang */
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: #0056b3; /* Biru tua */
+}
+
+/* Pesan Kejutan */
+#specialMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    font-size: 2rem;
+    background: #1a6dc0; /* Biru pastel */
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    color: #003366; /* Teks biru tua */
+}
+
+/* Halaman Ucapan */
+.ucapan-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(135deg, #b0cbe9, #0230fa);
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.5s ease-in-out;
+    overflow-y: auto;
+    height: 90vh;
+}
+
+/* Animasi FadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Teks di Halaman Ucapan */
+.ucapan-text {
+    font-size: 1.1rem;
+    line-height: 2.2rem;
+    color: #11235f;
+    text-align: justify;
+}
+
+/* Footer di Halaman Ucapan */
+.ucapan-footer {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    color: #11235f;
+}
+
+/* Ucapan Container */
+.ucapan-container {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Judul */
+.ucapan-title {
+    font-size: 2rem;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .ucapan-title {
+        font-size: 2.5rem;
+    }
+    .ucapan-text {
+        font-size: 1rem;
+    }
+}
